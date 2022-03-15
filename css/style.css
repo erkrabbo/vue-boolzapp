@@ -1,0 +1,50 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+/*       VARS        */
+:root{
+    --BACKGROUND_TOP_HEIGHT: 5rem;
+    --BACKGROUND-BOTTOM-HEIGHT: calc(100% - var(--BACKGROUND_TOP_HEIGHT));
+
+    /* colors */
+    --BACGROUND_TOP: #009688;
+    --BACGROUND_BOTTOM: #dbdbd3;
+    --APP_BACKGROUND: #eaeaea;
+}
+
+body{
+    height: 100vh;
+    position: relative;
+}
+
+.app-container{
+    position: absolute;
+    top: 1rem;
+    bottom: 1rem;
+    left: 1rem;
+    right: 1rem;
+    background-color: var(--APP_BACKGROUND);
+    max-width: 90%;
+    margin: 0 auto;
+}
+
+.background-top{
+    background-color: var(--BACGROUND_TOP);
+    height: var(--BACKGROUND_TOP_HEIGHT);
+}
+
+.background-bottom{
+    background-color: var(--BACGROUND_BOTTOM);
+    height: var(--BACKGROUND-BOTTOM-HEIGHT);
+}
+
+.chat-history{
+    max-width: 30%;
+}
+.user-info{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
