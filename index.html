@@ -8,6 +8,10 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    
     <link rel="stylesheet" href="css/style.css">
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
 </head>
@@ -17,19 +21,135 @@
 
     <div id = "app" class = "app-container">
         <div class="chat-history">
-            <div class="user-info">
-                <div class="user-info">
-                    <img src="img/avatar_io.jpg" alt="your profile photo" width="60">
+            <div class="chat-history-header">
+                <div class="chat-history-block">
+                    <img class = "circle" src="img/avatar_io.jpg" alt="your profile photo">
                     <span>Sofia</span>
                 </div>
-                <div>
-                    <i class="fa-solid fa-circle-notch"></i>
-                    <i class="fa-solid fa-message"></i>
-                    <i class="fa-solid fa-ellipsis-vertical"></i>
+
+                <div class="chat-history-block">
+                    <i class="fa-solid fa-circle-notch menu-icon"></i>
+                    <i class="fa-solid fa-message menu-icon"></i>
+                    <i class="fa-solid fa-ellipsis-vertical menu-icon"></i>
                 </div>
             </div>
+
+            <div class="silence-block">
+                <i class="fa-solid fa-bell-slash icon"></i>
+
+                <div class="silence-text">
+                    <span>Ricevi notifiche di nuovi messaggi</span>
+                    <a @click.prevent href="#">Attiva notifiche desktop</a>
+                </div>
+            </div>
+
+            <div class="search-block">
+                <a @click.prevent href="#">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </a>
+                <input type="text" size = "1" placeholder="Cerca o inizia una nuova chat">
+            </div>
+
+            <ul class="last-chats">
+                <li class="last-chats-chat">
+                    <img class = "circle" src="img/avatar_1.jpg" alt="name profile photo">
+                    <div class="chat-info">
+                        <span>Michele</span>
+                        <small>Ultimo messaggio inviato</small>
+                    </div>
+                    <span>12:00</span>
+                </li>
+
+                <li class="last-chats-chat">
+                    <img class = "circle" src="img/avatar_1.jpg" alt="name profile photo">
+                    <div class="chat-info">
+                        <span>Michele</span>
+                        <small>Ultimo messaggio inviato</small>
+                    </div>
+                    <span>12:00</span>
+                </li>
+
+                <li class="last-chats-chat">
+                    <img class = "circle" src="img/avatar_1.jpg" alt="name profile photo">
+                    <div class="chat-info">
+                        <span>Michele</span>
+                        <small>Ultimo messaggio inviato</small>
+                    </div>
+                    <span>12:00</span>
+                </li>
+
+                <li class="last-chats-chat">
+                    <img class = "circle" src="img/avatar_1.jpg" alt="name profile photo">
+                    <div class="chat-info">
+                        <span>Michele</span>
+                        <small>Ultimo messaggio inviato</small>
+                    </div>
+                    <span>12:00</span>
+                </li>
+
+                <li class="last-chats-chat">
+                    <img class = "circle" src="img/avatar_1.jpg" alt="name profile photo">
+                    <div class="chat-info">
+                        <span>Michele</span>
+                        <small>Ultimo messaggio inviato</small>
+                    </div>
+                    <span>12:00</span>
+                </li>
+
+                <li class="last-chats-chat">
+                    <img class = "circle" src="img/avatar_1.jpg" alt="name profile photo">
+                    <div class="chat-info">
+                        <span>Michele</span>
+                        <small>Ultimo messaggio inviato</small>
+                    </div>
+                    <span>12:00</span>
+                </li>
+
+                <li class="last-chats-chat">
+                    <img class = "circle" src="img/avatar_1.jpg" alt="name profile photo">
+                    <div class="chat-info">
+                        <span>Michele</span>
+                        <small>Ultimo messaggio inviato</small>
+                    </div>
+                    <span>12:00</span>
+                </li>
+
+                <li class="last-chats-chat">
+                    <img class = "circle" src="img/avatar_1.jpg" alt="name profile photo">
+                    <div class="chat-info">
+                        <span>Michele</span>
+                        <small>Ultimo messaggio inviato</small>
+                    </div>
+                    <span>12:00</span>
+                </li>
+            </ul>
+
         </div>
-        <div class="active-chat"></div>
+        <div class="active-chat">
+            <div class="active-chat-header">
+                <div class="active-chat-block">
+                    <img class = "circle" src="img/avatar_io.jpg" alt="your profile photo">
+                    <div class="chat-info">
+                        <span>Sofia</span>
+                        <small>Ultimo accesso oggi alle 12:00</small>
+                    </div>
+                </div>
+
+                <div class="active-chat-block">
+                    <i class="fa-solid fa-magnifying-glass menu-icon"></i>
+                    <i class="fa-solid fa-paperclip menu-icon"></i>
+                    <i class="fa-solid fa-ellipsis-vertical menu-icon"></i>
+                </div>
+            </div>
+
+            <ul class="active-chat-body"></ul>
+
+            <div class="active-chat-footer">
+                <i class="fa-regular fa-face-smile"></i>
+                <input type="text" size = "1" placeholder="Scrivi un messaggio">
+                <i class="fa-solid fa-microphone"></i>
+            </div>
+        </div>
 
     </div>
     
