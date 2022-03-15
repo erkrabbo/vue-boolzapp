@@ -162,6 +162,7 @@ body{
     background-color: white;
 
     margin: 0 calc(-1 * var(--CHAT_HISTORY_BLOCK_PADDING));
+    margin-bottom: calc(-1 * var(--CHAT_HISTORY_BLOCK_PADDING));
 }
 
 .last-chats-chat{
@@ -209,9 +210,16 @@ body{
 .active-chat-body{
     list-style: none;
 
+    display: flex;
+    flex-direction: column;
+
     background-image: url(../img/mine.jpg);
 
     height: calc(100% - var(--CHAT_HISTORY_BLOCK_HEIGHT) * 2);
+    padding: 1em;
+    gap: .5em;
+
+    overflow-y: auto;
 }
 
 .active-chat-footer{
@@ -233,11 +241,17 @@ body{
 
 .active-chat-footer i{
     flex-basis: 80px;
-    text-align: center;
+    /* text-align: center; */
+
+    margin: auto;
+
+    height: 100%;
+    display: flex;
 }
 
 .active-chat-footer i::before{
     font-size: 1.5em;
+    margin: auto;
 }
 
 
@@ -250,4 +264,37 @@ body{
     font-size: 1.5em;
 
     color: #b1b1b1;
+}
+
+.message{
+    display: inline-block;
+    position: relative;
+    padding: 1em;
+    border-radius: .5em;
+    /* margin: .1em .5em; */
+} 
+.user{
+    /* margin-left: auto; */
+    align-self: end;
+    /* margin-right: 0; */
+    background-color: #d5f9ba;
+}
+
+.other{
+    align-self: start;
+    background-color: white;
+}
+
+.content{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.content small{
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    font-size: .5em;
+     margin:.2em .5em;
 }
