@@ -76,6 +76,10 @@ body{
     margin: 0 calc(-1 * var(--CHAT_HISTORY_BLOCK_PADDING));
 }
 
+.chat-history-block span{
+    font-weight: 600;
+}
+
 .chat-history-block img,
 .active-chat-block img{
     max-height: calc(var(--CHAT_HISTORY_BLOCK_HEIGHT) - var(--CHAT_HISTORY_BLOCK_PADDING) * 2);
@@ -259,6 +263,7 @@ body{
 
     height: 100%;
     display: flex;
+    cursor: pointer;
 }
 
 .active-chat-footer i::before{
@@ -301,17 +306,27 @@ body{
 }
 
 .content{
-    position: relative;
     display: flex;
     flex-direction: column;
-
-    /* flex-basis: 200px; */
 }
 
-.content small{
+.message:hover i{
+    opacity: 1;
+    cursor: pointer;
+}
+
+.message small{
     position: absolute;
     right: 0;
     bottom: 0;
     font-size: .5em;
      margin:.2em .5em;
+}
+.message i{
+    position: absolute;
+    right: .5em;
+    top: .5em;
+    font-size: .8em;
+    padding:.2em .1em;
+    opacity: 0;
 }

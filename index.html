@@ -25,7 +25,11 @@
             <div class="chat-history-header">
                 <div class="chat-history-block">
                     <img class = "circle" src="img/avatar_io.jpg" alt="your profile photo">
-                    <span>Sofia</span>
+                    <div class="chat-info">
+                        <span>Sofia</span>
+                        <small v-if = "!typing">Online</small>
+                        <small v-else > Sta scrivendo...</small>
+                    </div>
                 </div>
 
                 <div class="chat-history-block">
@@ -56,9 +60,9 @@
                     <img class = "circle" :src="'img/' + chat.profileImg" alt="name profile photo">
                     <div class="chat-info">
                         <span>{{chat.name}}</span>
-                        <small>{{ chat.chatContent[last(chat.chatContent)].text }}</small>
+                        <small v-if = "chat.chatContent.length">{{ chat.chatContent[last(chat.chatContent)].text }}</small>
                     </div>
-                    <span>{{chat.chatContent[last(chat.chatContent)].time}}</span>
+                    <span v-if = "chat.chatContent.length">{{chat.chatContent[last(chat.chatContent)].time}}</span>
                 </li>
             </ul>
 
@@ -83,6 +87,7 @@
             <ul class="active-chat-body">
                 <li v-for = "msg in this.chatArchive[this.activeChatIndex].chatContent" class = "content">
                     <div class="message" :class = "msg.mine ? 'user' : 'other'">
+                        <i class="fa-solid fa-ellipsis-vertical menu-icon"></i>
                         <span>{{msg.text}}</span>
                         <small>{{msg.time}}</small>
                     </div>
@@ -91,8 +96,9 @@
 
             <div class="active-chat-footer">
                 <i class="fa-regular fa-face-smile"></i>
-                <input type="text" size = "1" placeholder="Scrivi un messaggio" @keypress.enter = "sendMessage" v-model="newMessage.text">
-                <i class="fa-solid fa-microphone"></i>
+                <input type="text" size = "1" placeholder="Scrivi un messaggio" @input = "sendBtn" @keypress.enter = "sendMessage" v-model="newMessage.text">
+                <i v-if = "typing == false" class="fa-solid fa-microphone"></i>
+                <i v-else class="fa-solid fa-paper-plane" @click = "sendMessage"></i>
             </div>
         </div>
 
