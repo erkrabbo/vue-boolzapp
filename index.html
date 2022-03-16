@@ -73,7 +73,7 @@
                     <img class = "circle" :src="'img/' + this.chatArchive[this.activeChatIndex].profileImg" alt="your profile photo">
                     <div class="chat-info">
                         <span>{{ this.chatArchive[this.activeChatIndex].name }}</span>
-                        <small>{{ activeChatInfo }}</small>
+                        <small>{{ this.chatArchive[this.activeChatIndex].lastSeen }}</small>
                     </div>
                 </div>
 

@@ -5,7 +5,7 @@ const app = new Vue({
         activeChatInfo: `Ultimo accesso oggi alle ${new Date().getHours()}.${new Date().getMinutes()}`,
         chatArchive: [
             {
-                id: 0,
+                lastSeen: `Ultimo accesso oggi alle ${randomTime(new Date(2012, 0, 1), new Date())}`,
                 name: "Michele",
                 profileImg: 'avatar_1.jpg',
                 chatContent:[
@@ -30,7 +30,7 @@ const app = new Vue({
                 ],
             },
             {
-                id: 1,
+                lastSeen: `Ultimo accesso oggi alle ${randomTime(new Date(2012, 0, 1), new Date())}`,
                 name: "Fabio",
                 profileImg: 'avatar_2.jpg',
                 chatContent:[
@@ -43,7 +43,7 @@ const app = new Vue({
                 ],
             },
             {
-                id: 2,
+                lastSeen: `Ultimo accesso oggi alle ${randomTime(new Date(2012, 0, 1), new Date())}`,
                 name: "Samuele",
                 profileImg: 'avatar_3.jpg',
                 chatContent:[
@@ -56,7 +56,7 @@ const app = new Vue({
                 ],
             },
             {
-                id: 3,
+                lastSeen: `Ultimo accesso oggi alle ${randomTime(new Date(2012, 0, 1), new Date())}`,
                 name: "Alessandro B.",
                 profileImg: 'avatar_4.jpg',
                 chatContent:[
@@ -69,7 +69,7 @@ const app = new Vue({
                 ],
             },
             {
-                id: 4,
+                lastSeen: `Ultimo accesso oggi alle ${randomTime(new Date(2012, 0, 1), new Date())}`,
                 name: "Alessandro L.",
                 profileImg: 'avatar_5.jpg',
                 chatContent:[
@@ -82,7 +82,7 @@ const app = new Vue({
                 ],
             },
             {
-                id: 5,
+                lastSeen: `Ultimo accesso oggi alle ${randomTime(new Date(2012, 0, 1), new Date())}`,
                 name: "Claudia",
                 profileImg: 'avatar_6.jpg',
                 chatContent:[
@@ -95,7 +95,7 @@ const app = new Vue({
                 ],
             },
             {
-                id: 6,
+                lastSeen: `Ultimo accesso oggi alle ${randomTime(new Date(2012, 0, 1), new Date())}`,
                 name: "Federico",
                 profileImg: 'avatar_7.jpg',
                 chatContent:[
@@ -108,7 +108,7 @@ const app = new Vue({
                 ],
             },
             {
-                id: 7,
+                lastSeen: `Ultimo accesso oggi alle ${randomTime(new Date(2012, 0, 1), new Date())}`,
                 name: "Davide",
                 profileImg: 'avatar_8.jpg',
                 chatContent:[
@@ -148,7 +148,7 @@ const app = new Vue({
             const chatta = document.querySelector('.active-chat-body');
             console.log(chatta.scrollTop, chatta.scrollHeight);
            
-            this.activeChatInfo = 'Sta scrivendo...'
+            this.chatArchive[this.activeChatIndex].lastSeen = 'Sta scrivendo...'
             setTimeout(() => {
                 chatta.scrollTop = chatta.scrollHeight * 2;
                 this.yourTurn = setTimeout(this.otherMessage, 1000);
@@ -165,7 +165,7 @@ const app = new Vue({
 
             const chatta = document.querySelector('.active-chat-body');
             console.log(chatta.scrollTop, chatta.scrollHeight)
-            this.activeChatInfo = `Ultimo accesso oggi alle ${new Date().getHours()}.${new Date().getMinutes()}`;
+            this.chatArchive[this.activeChatIndex].lastSeen = `Ultimo accesso oggi alle ${new Date().getHours()}.${new Date().getMinutes()}`;
             setTimeout(() => {
                 chatta.scrollTop = chatta.scrollHeight * 2;
             }, 0); 
