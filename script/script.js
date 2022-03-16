@@ -116,10 +116,16 @@ const app = new Vue({
             return array.length - 1;
         },
         sendMessage(){
-            this.newMessage.time = `${new Date().getMinutes() / 100 + new Date().getHours()}`;
+            this.newMessage.time = `${(new Date().getMinutes() / 100) + new Date().getHours()}`;
             this.chatArchive[this.activeChatIndex].chatContent.push({...this.newMessage});
             this.newMessage.text = '';
-            setTimeout(this.otherMessage, 1000)
+
+            const chatta = document.querySelector('.active-chat-body');
+            console.log(chatta.scrollTop, chatta.scrollHeight);
+            setTimeout(() => {
+                chatta.scrollTop = chatta.scrollHeight * 2;
+                this.yourTurn = setTimeout(this.otherMessage, 1000);
+            }, 0)
         },
         otherMessage(){
             const response = {
@@ -129,6 +135,12 @@ const app = new Vue({
 
             }
             this.chatArchive[this.activeChatIndex].chatContent.push({...response});
-        }
+
+            const chatta = document.querySelector('.active-chat-body');
+            console.log(chatta.scrollTop, chatta.scrollHeight)
+            setTimeout(() => {
+                chatta.scrollTop = chatta.scrollHeight * 2;
+            }, 0)
+        },
     } 
 })
