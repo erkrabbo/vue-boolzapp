@@ -2,6 +2,7 @@ const app = new Vue({
     el: '#vue-app',
     data:{
         typing: false,
+        activeChatInfo: `Ultimo accesso oggi alle ${new Date().getHours()}.${new Date().getMinutes()}`,
         chatArchive: [
             {
                 id: 0,
@@ -147,6 +148,7 @@ const app = new Vue({
             const chatta = document.querySelector('.active-chat-body');
             console.log(chatta.scrollTop, chatta.scrollHeight);
            
+            this.activeChatInfo = 'Sta scrivendo...'
             setTimeout(() => {
                 chatta.scrollTop = chatta.scrollHeight * 2;
                 this.yourTurn = setTimeout(this.otherMessage, 1000);
@@ -163,6 +165,7 @@ const app = new Vue({
 
             const chatta = document.querySelector('.active-chat-body');
             console.log(chatta.scrollTop, chatta.scrollHeight)
+            this.activeChatInfo = `Ultimo accesso oggi alle ${new Date().getHours()}.${new Date().getMinutes()}`;
             setTimeout(() => {
                 chatta.scrollTop = chatta.scrollHeight * 2;
             }, 0); 
