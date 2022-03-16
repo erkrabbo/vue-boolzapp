@@ -56,9 +56,9 @@
                     <img class = "circle" :src="'img/' + chat.profileImg" alt="name profile photo">
                     <div class="chat-info">
                         <span>{{chat.name}}</span>
-                        <small>{{ chat.chatContent[length(chat.chatContent)].text }}</small>
+                        <small>{{ chat.chatContent[last(chat.chatContent)].text }}</small>
                     </div>
-                    <span>{{chat.chatContent[length(chat.chatContent)].time}}</span>
+                    <span>{{chat.chatContent[last(chat.chatContent)].time}}</span>
                 </li>
             </ul>
 

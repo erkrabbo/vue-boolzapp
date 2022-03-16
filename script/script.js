@@ -112,13 +112,23 @@ const app = new Vue({
         changeChat(index){
             this.activeChatIndex = index;
         },
-        length(array){
+        last(array){
             return array.length - 1;
         },
         sendMessage(){
             this.newMessage.time = `${new Date().getMinutes() / 100 + new Date().getHours()}`;
             this.chatArchive[this.activeChatIndex].chatContent.push({...this.newMessage});
             this.newMessage.text = '';
+            setTimeout(this.otherMessage, 1000)
+        },
+        otherMessage(){
+            const response = {
+                time: `${new Date().getMinutes() / 100 + new Date().getHours()}`,
+                mine: false,
+                text: 'ok',
+
+            }
+            this.chatArchive[this.activeChatIndex].chatContent.push({...response});
         }
     } 
 })
