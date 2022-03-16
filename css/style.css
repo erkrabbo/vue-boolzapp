@@ -185,10 +185,15 @@ body{
 
 .chat-info span{
     font-weight: 600;
+    
 }
 
 .chat-info small{
     color: grey;
+    white-space: nowrap;
+    max-width: 30ch;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .last-chats-chat>span{
@@ -202,13 +207,18 @@ body{
 
 .active-chat{
     width: 100%;
+    background-image: url(../img/mine.jpg);
 }
 .active-chat-header{
-    padding: 1em;
+    padding: .9em;
+    background-color: var(--APP_BACKGROUND);
 }
 
 .active-chat-body{
     list-style: none;
+
+    margin: 0 auto;
+    max-width: 700px;
 
     display: flex;
     flex-direction: column;
@@ -225,6 +235,7 @@ body{
 .active-chat-footer{
     padding: 1em 0;
     height: var(--CHAT_HISTORY_BLOCK_HEIGHT);
+    background-color: var(--APP_BACKGROUND);
 
     display: flex;
     align-items: center;
@@ -272,6 +283,8 @@ body{
     padding: 1em;
     border-radius: .5em;
     /* margin: .1em .5em; */
+    max-width: 330px;
+    /* flex-grow: 1; */
 } 
 .user{
     /* margin-left: auto; */
@@ -289,6 +302,8 @@ body{
     position: relative;
     display: flex;
     flex-direction: column;
+
+    /* flex-basis: 200px; */
 }
 
 .content small{

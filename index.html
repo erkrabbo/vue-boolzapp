@@ -52,23 +52,23 @@
             </div>
 
             <ul class="last-chats">
-                <li v-for = "chat in this.chatArchive" class="last-chats-chat">
+                <li v-for = "(chat, index) in this.chatArchive" class="last-chats-chat" @click = "changeChat(index)">
                     <img class = "circle" :src="'img/' + chat.profileImg" alt="name profile photo">
                     <div class="chat-info">
                         <span>{{chat.name}}</span>
-                        <small>Ultimo messaggio inviato</small>
+                        <small>{{ chat.chatContent[length(chat.chatContent)].text }}</small>
                     </div>
-                    <span>12:00</span>
+                    <span>{{chat.chatContent[length(chat.chatContent)].time}}</span>
                 </li>
             </ul>
 
         </div>
-        <div class="active-chat">
+        <div v-if = "this.activeChatIndex >= 0" class="active-chat">
             <div class="active-chat-header">
                 <div class="active-chat-block">
-                    <img class = "circle" src="img/avatar_io.jpg" alt="your profile photo">
+                    <img class = "circle" :src="'img/' + this.chatArchive[this.activeChatIndex].profileImg" alt="your profile photo">
                     <div class="chat-info">
-                        <span>Sofia</span>
+                        <span>{{ this.chatArchive[this.activeChatIndex].name }}</span>
                         <small>Ultimo accesso oggi alle 12:00</small>
                     </div>
                 </div>
@@ -81,29 +81,17 @@
             </div>
 
             <ul class="active-chat-body">
-                <li class = "content">
-                    <div class="user message">
-                        <span>ciao</span>
-                        <small>15.30</small>
-                    </div>
-                </li>
-                <li class = "content">
-                    <div class="user message">
-                        <span>ciao</span>
-                        <small>15.30</small>
-                    </div>
-                </li>
-                <li class = "content">
-                    <div class="other message">
-                        <span>ciao</span>
-                        <small>15.31</small>
+                <li v-for = "msg in this.chatArchive[this.activeChatIndex].chatContent" class = "content">
+                    <div class="message" :class = "msg.mine ? 'user' : 'other'">
+                        <span>{{msg.text}}</span>
+                        <small>{{msg.time}}</small>
                     </div>
                 </li>
             </ul>
 
             <div class="active-chat-footer">
                 <i class="fa-regular fa-face-smile"></i>
-                <input type="text" size = "1" placeholder="Scrivi un messaggio">
+                <input type="text" size = "1" placeholder="Scrivi un messaggio" @keypress.enter = "sendMessage" v-model="newMessage.text">
                 <i class="fa-solid fa-microphone"></i>
             </div>
         </div>

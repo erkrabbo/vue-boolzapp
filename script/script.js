@@ -1,4 +1,3 @@
-
 const app = new Vue({
     el: '#vue-app',
     data:{
@@ -8,10 +7,20 @@ const app = new Vue({
                 profileImg: 'avatar_1.jpg',
                 chatContent:[
                     {
-                        mine: false,
+                        mine: true,
                         text: 'ciao',
                         time: '15.30',
-                    }
+                    },
+                    {
+                        mine: false,
+                        text: 'bella bro',
+                        time: '15.30',
+                    },
+                    {
+                        mine: false,
+                        text: 'asjcbsjdbs ouuasdjcsidu vudabviVIbv sdaidv sdvjsbd vdiuuPNPD VSDBVISDUipbv IDVBHIPDV apdvSJDVBHsiv APDVBSDJVBSDHI Vudv aduv duavbuid VUdv usdv duvh dsviu ds',
+                        time: '15.30',
+                    },
                 ],
             },
             {
@@ -91,6 +100,25 @@ const app = new Vue({
                     }
                 ],
             },
-        ]
-    }
+        ],
+        activeChatIndex: 0,
+        newMessage: {
+            mine: true,
+            text: '',
+            time: 0.0,
+        },
+    },  
+    methods:{
+        changeChat(index){
+            this.activeChatIndex = index;
+        },
+        length(array){
+            return array.length - 1;
+        },
+        sendMessage(){
+            this.newMessage.time = `${new Date().getMinutes() / 100 + new Date().getHours()}`;
+            this.chatArchive[this.activeChatIndex].chatContent.push({...this.newMessage});
+            this.newMessage.text = '';
+        }
+    } 
 })
