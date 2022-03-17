@@ -14,7 +14,7 @@ const app = new Vue({
         },
         chatArchive: [
             {
-                lastSeen: `Ultimo accesso oggi alle ${randomTime(new Date(2012, 0, 1), new Date())}`,
+                lastSeen: `Ultimo accesso oggi alle ${randomTime()}`,
                 name: "Michele",
                 profileImg: 'avatar_1.jpg',
                 id: 0,
@@ -24,26 +24,26 @@ const app = new Vue({
                         owner: 'Sofia',
                         text: 'ciao',
                         date: randomDate(new Date(2012, 0, 1), new Date()),
-                        time: randomTime(new Date(2012, 0, 1), new Date()),
+                        time: randomTime(),
                     },
                     {
                         showMenu: false,
                         owner: 'someone',
                         text: 'bella bro',
                         date: randomDate(new Date(2012, 0, 1), new Date()),
-                        time: randomTime(new Date(2012, 0, 1), new Date()),
+                        time: randomTime(),
                     },
                     {
                         showMenu: false,
                         owner: 'someone',
                         text: 'asjcbsjdbs ouuasdjcsidu vudabviVIbv sdaidv sdvjsbd vdiuuPNPD VSDBVISDUipbv IDVBHIPDV apdvSJDVBHsiv APDVBSDJVBSDHI Vudv aduv duavbuid VUdv usdv duvh dsviu ds',
                         date: randomDate(new Date(2012, 0, 1), new Date()),
-                        time: randomTime(new Date(2012, 0, 1), new Date()),
+                        time: randomTime(),
                     },
                 ],
             },
             {
-                lastSeen: `Ultimo accesso oggi alle ${randomTime(new Date(2012, 0, 1), new Date())}`,
+                lastSeen: `Ultimo accesso oggi alle ${randomTime()}`,
                 name: "Fabio",
                 profileImg: 'avatar_2.jpg',
                 id: 1,
@@ -53,12 +53,12 @@ const app = new Vue({
                         owner: 'someone',
                         text: 'ciao',
                         date: randomDate(new Date(2012, 0, 1), new Date()),
-                        time: randomTime(new Date(2012, 0, 1), new Date()),
+                        time: randomTime(),
                     }
                 ],
             },
             {
-                lastSeen: `Ultimo accesso oggi alle ${randomTime(new Date(2012, 0, 1), new Date())}`,
+                lastSeen: `Ultimo accesso oggi alle ${randomTime()}`,
                 name: "Samuele",
                 profileImg: 'avatar_3.jpg',
                 id: 2,
@@ -67,13 +67,13 @@ const app = new Vue({
                         showMenu: false,
                         owner: 'someone',
                         text: 'ciao',
-                        time: randomTime(new Date(2012, 0, 1), new Date()),
+                        time: randomTime(),
                         date: randomDate(new Date(2012, 0, 1), new Date()),
                     }
                 ],
             },
             {
-                lastSeen: `Ultimo accesso oggi alle ${randomTime(new Date(2012, 0, 1), new Date())}`,
+                lastSeen: `Ultimo accesso oggi alle ${randomTime()}`,
                 name: "Alessandro B.",
                 profileImg: 'avatar_4.jpg',
                 id: 3,
@@ -82,13 +82,13 @@ const app = new Vue({
                         showMenu: false,
                         owner: 'someone',
                         text: 'ciao',
-                        time: randomTime(new Date(2012, 0, 1), new Date()),
+                        time: randomTime(),
                         date: randomDate(new Date(2012, 0, 1), new Date()),
                     }
                 ],
             },
             {
-                lastSeen: `Ultimo accesso oggi alle ${randomTime(new Date(2012, 0, 1), new Date())}`,
+                lastSeen: `Ultimo accesso oggi alle ${randomTime()}`,
                 name: "Alessandro L.",
                 profileImg: 'avatar_5.jpg',
                 id: 4,
@@ -97,13 +97,13 @@ const app = new Vue({
                         showMenu: false,
                         owner: 'someone',
                         text: 'ciao',
-                        time: randomTime(new Date(2012, 0, 1), new Date()),
+                        time: randomTime(),
                         date: randomDate(new Date(2012, 0, 1), new Date()),
                     }
                 ],
             },
             {
-                lastSeen: `Ultimo accesso oggi alle ${randomTime(new Date(2012, 0, 1), new Date())}`,
+                lastSeen: `Ultimo accesso oggi alle ${randomTime()}`,
                 name: "Claudia",
                 profileImg: 'avatar_6.jpg',
                 id: 5,
@@ -112,13 +112,13 @@ const app = new Vue({
                         showMenu: false,
                         owner: 'someone',
                         text: 'ciao',
-                        time: randomTime(new Date(2012, 0, 1), new Date()),
+                        time: randomTime(),
                         date: randomDate(new Date(2012, 0, 1), new Date()),
                     }
                 ],
             },
             {
-                lastSeen: `Ultimo accesso oggi alle ${randomTime(new Date(2012, 0, 1), new Date())}`,
+                lastSeen: `Ultimo accesso oggi alle ${randomTime()}`,
                 name: "Federico",
                 profileImg: 'avatar_7.jpg',
                 id: 6,
@@ -127,13 +127,13 @@ const app = new Vue({
                         showMenu: false,
                         owner: 'someone',
                         text: 'ciao',
-                        time: randomTime(new Date(2012, 0, 1), new Date()),
+                        time: randomTime(),
                         date: randomDate(new Date(2012, 0, 1), new Date()),
                     }
                 ],
             },
             {
-                lastSeen: `Ultimo accesso oggi alle ${randomTime(new Date(2012, 0, 1), new Date())}`,
+                lastSeen: `Ultimo accesso oggi alle ${randomTime()}`,
                 name: "Davide",
                 profileImg: 'avatar_8.jpg',
                 id: 7,
@@ -142,7 +142,7 @@ const app = new Vue({
                         showMenu: false,
                         owner: 'someone',
                         text: 'ciao',
-                        time: randomTime(new Date(2012, 0, 1), new Date()),
+                        time: randomTime(),
                         date: randomDate(new Date(2012, 0, 1), new Date()),
                     }
                 ],
@@ -296,9 +296,11 @@ const app = new Vue({
     // return a.chatContent[this.last(a.chatContent)].time - b.chatContent[this.last(b.chatContent)].time;
     // })
 
-    function randomTime(start, end) {
-        const time = new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime()));
-        return `${time.getUTCHours()}.${time.getUTCMinutes()}`;
+    function randomTime() {
+        const time = dayjs().hour(Math.random() * 23).minute(Math.random() * 59);
+        // console.log(time);
+        const minuteToReturn = time.hour() + (time.minute() / 100).toFixed(2) % time.minute();
+        return `${minuteToReturn}`;
       }
     
     function randomDate(start, end) {
