@@ -358,7 +358,8 @@ body{
     cursor: pointer;
 }
 
-.pop-up-menu li:first-child{
+.pop-up-menu li:first-child,
+.pop-up-new-chat div:first-child{
     background-color: red;
     color: white;
     text-align: center;
@@ -366,4 +367,24 @@ body{
 .pop-up-menu li + li {
     border-top: 1px solid grey;
 
+}
+.pop-up-new-chat{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    /* margin: 0 auto; */
+
+    list-style: none;
+    text-align: center;
+
+    background-color: white;
+
+    
+    border: 1px solid grey;
+    border-radius: .2em;
+    box-shadow: 0px 5px 40px 1px #6d6767;
+}
+
+.pop-up-new-chat select{
+    width: 100%;
 }

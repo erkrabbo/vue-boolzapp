@@ -1,7 +1,9 @@
 const app = new Vue({
     el: '#vue-app',
     data:{
+        startNewChatPop: false,
         searchKey: '',
+        searchContact: '',
         activeChatInfo: `Ultimo accesso oggi alle ${new Date().getHours()}.${new Date().getMinutes()}`,
         user:{
             name: 'Sofia',
@@ -157,6 +159,11 @@ const app = new Vue({
                 return element.name.toLowerCase().includes(this.searchKey.toLowerCase()) && element.chatContent.length > 0;
                 })
             },
+        voidChats(){
+            return this.chatArchive.filter(element => {
+                return element.name.toLowerCase().includes(this.searchContact.toLowerCase());
+                })
+            },
     },
     methods:{
         changeChat(index){
@@ -226,7 +233,7 @@ const app = new Vue({
         },
         delChat(){
             this.chatArchive[this.activeChatIndex].chatContent = [];
-        }
+        },
     },
 })
 

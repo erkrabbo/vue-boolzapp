@@ -34,8 +34,16 @@
 
                 <div class="chat-history-block">
                     <i class="fa-solid fa-circle-notch menu-icon"></i>
-                    <i class="fa-solid fa-message menu-icon"></i>
+                    <i class="fa-solid fa-message menu-icon" @click = "startNewChatPop = !startNewChatPop"></i>
                     <i class="fa-solid fa-ellipsis-vertical menu-icon"></i>
+                    <div class="pop-up-new-chat" v-show = "startNewChatPop">
+                        <div @click = "startNewChatPop = !startNewChatPop">&Cross;</div>
+                        <input type="text" v-model = "searchContact">
+                        <br>
+                        <select name="rubrica" id="">
+                            <option v-for = "contact in voidChats" value="contact.name">{{contact.name}}</option>
+                        </select>
+                    </div>
                 </div>
             </div>
 
