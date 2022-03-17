@@ -86,10 +86,14 @@
                     </div>
                 </div>
 
-                <div class="active-chat-block">
+                <div class="active-chat-block" style = "position: relative;">
                     <i class="fa-solid fa-magnifying-glass menu-icon"></i>
                     <i class="fa-solid fa-paperclip menu-icon"></i>
-                    <i class="fa-solid fa-ellipsis-vertical menu-icon" @click = "delChat"></i>
+                    <i class="fa-solid fa-ellipsis-vertical menu-icon" @click = "showChatOptions = !showChatOptions"></i>
+                    <ul class="pop-up-menu" v-show = "showChatOptions">
+                        <li @click = "showChatOptions = !showChatOptions">&Cross;</li>
+                        <li @click = "delChat">Svuota Chat</li>
+                    </ul>
                 </div>
             </div>
 
