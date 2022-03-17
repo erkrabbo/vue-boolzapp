@@ -40,9 +40,10 @@
                         <div @click = "startNewChatPop = !startNewChatPop">&Cross;</div>
                         <input type="text" v-model = "searchContact">
                         <br>
-                        <select name="rubrica" id="">
-                            <option v-for = "contact in voidChats" value="contact.name">{{contact.name}}</option>
+                        <select name="rubrica" v-model ="newChatId">
+                            <option v-for = "contact in voidChats" :value="contact.id" >{{contact.name}}</option>
                         </select>
+                        <button @click="changeChat(newChatId)">Start Chat</button>
                     </div>
                 </div>
             </div>

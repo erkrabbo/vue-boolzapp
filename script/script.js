@@ -5,6 +5,7 @@ const app = new Vue({
         searchKey: '',
         searchContact: '',
         activeChatInfo: `Ultimo accesso oggi alle ${new Date().getHours()}.${new Date().getMinutes()}`,
+        newChatId: 0,
         user:{
             name: 'Sofia',
             status: 'Online',
