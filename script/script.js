@@ -1,7 +1,7 @@
 const app = new Vue({
     el: '#vue-app',
     data:{
-        key: '',
+        searchKey: '',
         activeChatInfo: `Ultimo accesso oggi alle ${new Date().getHours()}.${new Date().getMinutes()}`,
         user:{
             name: 'Sofia',
@@ -153,7 +153,7 @@ const app = new Vue({
     },
     computed:{
         filteredChat() {
-            return this.chatArchive.filter(element => element.name.toLowerCase().includes(this.key.toLowerCase()))
+            return this.chatArchive.filter(element => element.name.toLowerCase().includes(this.searchKey.toLowerCase()))
         }
     },
     methods:{
@@ -212,6 +212,12 @@ const app = new Vue({
         },
         showMenu(msg){
             msg.showMenu = !msg.showMenu;
+        },
+        delMessage (msg, array){
+            array.splice(array.indexOf(msg),1);
+        },
+        msgInfo(msg){
+            console.log(msg)
         }
     },
 })

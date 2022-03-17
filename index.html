@@ -52,7 +52,7 @@
                 <a @click.prevent href="#">
                     <i class="fa-solid fa-magnifying-glass"></i>
                 </a>
-                <input type="text" v-model="key" size = "1" placeholder="Cerca o inizia una nuova chat">
+                <input type="text" v-model="searchKey" size = "1" placeholder="Cerca o inizia una nuova chat">
             </div>
 
             <ul class="last-chats">
@@ -92,8 +92,8 @@
                         <small>{{msg.time}}</small>
                         <ul class="pop-up-menu" v-show = "(msg.showMenu)">
                             <li @click = "showMenu(msg)">&Cross;</li>
-                            <li>Elimina messaggio</li>
-                            <li>Info</li>
+                            <li @click = "delMessage(msg,chatArchive[activeChatIndex].chatContent)">Elimina messaggio</li>
+                            <li @click = "msgInfo(msg)">Info</li>
                         </ul>
                     </div>
                 </li>
@@ -102,7 +102,7 @@
             <div class="active-chat-footer">
                 <i class="fa-regular fa-face-smile"></i>
                 <input type="text" size = "1" placeholder="Scrivi un messaggio" @input = "sendBtn" @keypress.enter = "sendMessage" v-model="newMessage.text">
-                <i v-if = "typing == false" class="fa-solid fa-microphone"></i>
+                <i v-if = "user.typing == false" class="fa-solid fa-microphone"></i>
                 <i v-else class="fa-solid fa-paper-plane" @click = "sendMessage"></i>
             </div>
         </div>
