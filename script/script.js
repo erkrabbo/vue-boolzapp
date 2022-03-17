@@ -222,7 +222,7 @@ const app = new Vue({
 
                 const chatta = document.querySelector('.active-chat-body');
             
-                this.chatArchive[this.activeChatIndex].lastSeen = 'Sta scrivendo...';
+                this.chatArchive[this.activeChatIndex].lastSeen = 'Online';
 
                 setTimeout(() => {
                     chatta.scrollTop = chatta.scrollHeight * 2;
@@ -232,24 +232,33 @@ const app = new Vue({
             
         },
         otherMessage(){
-            const randomIndex = Math.floor(Math.random() * this.randomItalianSentences.length)
-            const randomWord = this.randomItalianSentences[randomIndex];
-            const response = {
-                time: `${new Date().getMinutes() / 100 + new Date().getHours()}`,
-                mine: false,
-                text: randomWord,
-                showMenu: false,
-                owner: 'someone',
-
-            };
-            this.chatArchive[this.activeChatIndex].chatContent.push({...response});
-
-            const chatta = document.querySelector('.active-chat-body');
-            
-            this.chatArchive[this.activeChatIndex].lastSeen = `Ultimo accesso oggi alle ${new Date().getHours()}.${new Date().getMinutes()}`;
+            this.chatArchive[this.activeChatIndex].lastSeen = 'Sta scrivendo...';
             setTimeout(() => {
-                chatta.scrollTop = chatta.scrollHeight * 2;
-            }, 0); 
+                const randomIndex = Math.floor(Math.random() * this.randomItalianSentences.length)
+                    const randomWord = this.randomItalianSentences[randomIndex];
+                    const response = {
+                        time: `${new Date().getMinutes() / 100 + new Date().getHours()}`,
+                        mine: false,
+                        text: randomWord,
+                        showMenu: false,
+                        owner: 'someone',
+    
+                    };
+                    this.chatArchive[this.activeChatIndex].chatContent.push({...response});
+                    setTimeout(() => {
+                        this.chatArchive[this.activeChatIndex].lastSeen = 'Online';
+                    }, 100)
+    
+                    const chatta = document.querySelector('.active-chat-body');
+                    
+                    setTimeout(() => {
+                        chatta.scrollTop = chatta.scrollHeight * 2;
+                    }, 0);
+                    
+                    setTimeout(() =>{
+                        this.chatArchive[this.activeChatIndex].lastSeen = `Ultimo accesso oggi alle ${new Date().getHours()}.${new Date().getMinutes()}`;
+                    }, 2000)
+            },300)
         },
         sendBtn(){
             if (this.newMessage.text){
@@ -270,6 +279,7 @@ const app = new Vue({
         },
         delChat(){
             this.chatArchive[this.activeChatIndex].chatContent = [];
+            this.showChatOptions = !this.showChatOptions;
         },
     },
 })
