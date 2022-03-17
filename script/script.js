@@ -154,6 +154,37 @@ const app = new Vue({
             text: '',
             time: 0.0,
         },
+        randomItalianSentences: [
+            'Non esistono più le mezze stagioni',
+            'Quando c’è la salute, c’è tutto',
+            'Non è per i soldi, ma per una questione di principio',
+            'Il nero sfina',
+            'Nella splendida cornice di…',
+            'Allo stato dell’arte',
+            'Oggi come oggi',
+            'L’eccezione che conferma la regola',
+            'Non c’è due senza tre',
+            'La matematica non è un’opinione',
+            'La mia vuole essere semplicemente una critica costruttiva',
+            'Ai tempi nostri ci si divertiva con poco',
+            'La verdura di una volta aveva tutto un altro sapore',
+            'A mio modestissimo parere',
+            'Per non saper né leggere né scrivere',
+            'Non si finisce mai di imparare',
+            'Chi più ne ha più ne metta',
+            'I soldi non sono tutto nella vita',
+            'Il condizionale è d’obbligo',
+            'Ce l’ho sulla punta della lingua',
+            'Non esistono solo il bianco e il nero, ma ci sono tante sfumature di grigio',
+            'In tempi non sospetti',
+            'Patti chiari e amicizia lunga',
+            'Quest’anno è proprio volato',
+            'Di questo passo chissà dove andremo a finire',
+            'Non metteremo le mani nelle tasche degli italiani',
+            'Tanto è tutto un magna magna',
+            'Senza se e senza ma',
+            'Sono sempre i migliori quelli che se ne vanno',
+            'Nella vita non si può mai sapere'],
     },
     computed:{
         filteredChat() {
@@ -201,14 +232,16 @@ const app = new Vue({
             
         },
         otherMessage(){
+            const randomIndex = Math.floor(Math.random() * this.randomItalianSentences.length)
+            const randomWord = this.randomItalianSentences[randomIndex];
             const response = {
                 time: `${new Date().getMinutes() / 100 + new Date().getHours()}`,
                 mine: false,
-                text: 'ok',
+                text: randomWord,
                 showMenu: false,
                 owner: 'someone',
 
-            }
+            };
             this.chatArchive[this.activeChatIndex].chatContent.push({...response});
 
             const chatta = document.querySelector('.active-chat-body');
@@ -262,3 +295,5 @@ const app = new Vue({
     const time = new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime()));
     return [time.getUTCMonth(),time.getUTCDay(),time.getUTCFullYear()];
     }
+
+    
