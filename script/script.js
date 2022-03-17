@@ -171,18 +171,21 @@ const app = new Vue({
             this.newMessage.time = `${new Date().getMinutes() / 100 + new Date().getHours()}`;
             this.newMessage.showMenu = false;
             this.newMessage.owner = this.user.name;
-            this.chatArchive[this.activeChatIndex].chatContent.push({...this.newMessage});
-            this.newMessage.text = '';
-            this.user.typing = false;
+            if (this.newMessage.text.trim() != ''){
+                this.chatArchive[this.activeChatIndex].chatContent.push({...this.newMessage});
+                this.newMessage.text = '';
+                this.user.typing = false;
 
-            const chatta = document.querySelector('.active-chat-body');
-           
-            this.chatArchive[this.activeChatIndex].lastSeen = 'Sta scrivendo...';
+                const chatta = document.querySelector('.active-chat-body');
+            
+                this.chatArchive[this.activeChatIndex].lastSeen = 'Sta scrivendo...';
 
-            setTimeout(() => {
-                chatta.scrollTop = chatta.scrollHeight * 2;
-                this.yourTurn = setTimeout(this.otherMessage, 1000);
-            }, 0)
+                setTimeout(() => {
+                    chatta.scrollTop = chatta.scrollHeight * 2;
+                    this.yourTurn = setTimeout(this.otherMessage, 1000);
+                }, 0)
+            }
+            
         },
         otherMessage(){
             const response = {
