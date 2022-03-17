@@ -299,7 +299,7 @@ const app = new Vue({
     function randomTime() {
         const time = dayjs().hour(Math.random() * 23).minute(Math.random() * 59);
         // console.log(time);
-        const minuteToReturn = time.hour() + (time.minute() / 100).toFixed(2) % time.minute();
+        const minuteToReturn = time.hour() + (time.minute() / 100).toPrecision(2) % time.minute();
         return `${minuteToReturn}`;
       }
     
