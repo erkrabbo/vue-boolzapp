@@ -170,9 +170,10 @@ const app = new Vue({
         sendMessage(){
             this.newMessage.time = `${new Date().getMinutes() / 100 + new Date().getHours()}`;
             this.newMessage.showMenu = false;
+            this.newMessage.owner = this.user.name;
             this.chatArchive[this.activeChatIndex].chatContent.push({...this.newMessage});
             this.newMessage.text = '';
-            this.typing = false;
+            this.user.typing = false;
 
             const chatta = document.querySelector('.active-chat-body');
            
@@ -189,6 +190,7 @@ const app = new Vue({
                 mine: false,
                 text: 'ok',
                 showMenu: false,
+                owner: 'someone',
 
             }
             this.chatArchive[this.activeChatIndex].chatContent.push({...response});
