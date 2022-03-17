@@ -83,9 +83,10 @@
             </ul>
 
         </div>
-        <div v-if = "activeChatIndex >= 0" class="active-chat">
+        <div v-if = "activeChatIndex >= 0" class="active-chat" :style = "'z-index:' + chatZIndex">
             <div class="active-chat-header">
                 <div class="active-chat-block">
+                    <i class="fa-solid fa-angle-left menu-icon" @click ="chatZIndex = -1" ></i>
                     <img class = "circle" :src="'img/' + this.chatArchive[this.activeChatIndex].profileImg" alt="your profile photo">
                     <div class="chat-info">
                         <span>{{ this.chatArchive[this.activeChatIndex].name }}</span>
@@ -126,7 +127,10 @@
                 <i v-else class="fa-solid fa-paper-plane" @click = "sendMessage"></i>
             </div>
         </div>
-
+        
+        <!-- <div v-else class="active-chat" style = "display: flex; background: white; border: 1px solid black;">
+            <h1 style = "margin: auto;">Seleziona una chat per visualizzarne il contenuto in questa finestra</h1>
+        </div> -->
     </div>
     <script src="https://unpkg.com/dayjs@1.8.21/dayjs.min.js"></script>
     <script src="script/script.js"></script>

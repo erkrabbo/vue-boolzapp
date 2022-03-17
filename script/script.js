@@ -6,6 +6,7 @@ const app = new Vue({
         searchContact: '',
         activeChatInfo: `Ultimo accesso oggi alle ${new Date().getHours()}.${new Date().getMinutes()}`,
         newChatId: 0,
+        chatZIndex: 0,
         showChatOptions: false,
         user:{
             name: 'Sofia',
@@ -148,7 +149,7 @@ const app = new Vue({
                 ],
             },
         ],
-        activeChatIndex: 0,
+        activeChatIndex: -1,
         newMessage: {
             mine: true,
             text: '',
@@ -201,12 +202,14 @@ const app = new Vue({
     methods:{
         changeChat(index){
             this.activeChatIndex = index;
-            const chatta = document.querySelector('.active-chat-body');
-            setTimeout(() => {
-                chatta.scrollTop = chatta.scrollHeight * 2;
-            }, 0);
+            // const chatta = document.querySelector('.active-chat-body');
+            // setTimeout(() => {
+            //     chatta.scrollTop = chatta.scrollHeight * 2;
+            // }, 0);
             this.startNewChatPop = false;
             this.showChatOptions = false;
+
+            this.chatZIndex = 90;
         },
         last(array){
             return array.length - 1;
@@ -299,7 +302,7 @@ const app = new Vue({
     function randomTime() {
         const time = dayjs().hour(Math.random() * 23).minute(Math.random() * 59);
         // console.log(time);
-        const minuteToReturn = time.hour() + (time.minute() / 100).toPrecision(2) % time.minute();
+        const minuteToReturn = time.hour() + (time.minute() / 100).toFixed(2) % time.minute();
         return `${minuteToReturn}`;
       }
     

@@ -49,6 +49,8 @@ body{
 }
 
 .chat-history{
+    position: relative;
+    z-index: 1;
     height: 100%;
     flex-basis: 100%;
     padding: var(--CHAT_HISTORY_BLOCK_PADDING);
@@ -211,7 +213,12 @@ body{
 }
 
 .active-chat{
-    display: none;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    /* display: none; */
     width: 100%;
     background-image: url(../img/mine.jpg);
 }
@@ -433,7 +440,7 @@ body{
     }
 
     .active-chat{
-        display: block;
+        position: static;
     }
 
     .chat-history{
