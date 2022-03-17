@@ -196,7 +196,7 @@ body{
 .chat-info small{
     color: grey;
     white-space: nowrap;
-    max-width: 30ch;
+    max-width: 25ch;
     overflow: hidden;
     text-overflow: ellipsis;
 }
@@ -363,19 +363,28 @@ body{
     background-color: red;
     color: white;
     text-align: center;
+    padding: .5em;
 }
 .pop-up-menu li + li {
     border-top: 1px solid grey;
 
 }
 .pop-up-new-chat{
+    width: 300px;
+    max-width: 100%;
+    height: 300px;
+    padding: 1em;
     position: fixed;
+    z-index: 999999999;
     top: 50%;
     left: 50%;
+    transform: translate(-50%, -50%);
+    max-height: 100%;
+    overflow: hidden;
     /* margin: 0 auto; */
 
     list-style: none;
-    text-align: center;
+    /* text-align: center; */
 
     background-color: white;
 
@@ -385,6 +394,29 @@ body{
     box-shadow: 0px 5px 40px 1px #6d6767;
 }
 
-.pop-up-new-chat select{
+.pop-up-new-chat input{
     width: 100%;
+    height: 2em;
+    padding: .2em;
+}
+.pop-up-new-chat .chat-info small{
+    max-width: 10ch;
+}
+
+.pop-up-new-chat .header{
+    position: absolute;
+    top:0;
+    left:0;
+    right: 0;
+    cursor: pointer;
+    height: 4.5rem;
+}
+.pop-up-new-chat ul{
+    margin-left: -.2em;
+    margin-right: -.2em;
+    margin-top: 4.5rem;
+    min-height: 0;
+    /* height: 300px; */
+    max-height: 100%;
+    overflow-y: auto;
 }

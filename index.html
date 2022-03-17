@@ -37,13 +37,20 @@
                     <i class="fa-solid fa-message menu-icon" @click = "startNewChatPop = !startNewChatPop"></i>
                     <i class="fa-solid fa-ellipsis-vertical menu-icon"></i>
                     <div class="pop-up-new-chat" v-show = "startNewChatPop">
-                        <div @click = "startNewChatPop = !startNewChatPop">&Cross;</div>
-                        <input type="text" v-model = "searchContact">
-                        <br>
-                        <select name="rubrica" v-model ="newChatId">
-                            <option v-for = "contact in voidChats" :value="contact.id" >{{contact.name}}</option>
-                        </select>
-                        <button @click="changeChat(newChatId)">Start Chat</button>
+                        <div class="header">
+                            <div @click = "startNewChatPop = !startNewChatPop">ANNULLA</div>
+                            <input type="text" v-model = "searchContact" placeholder="Digita il nome di un contatto">
+                        </div>
+                        <ul>
+                            <li v-for = "(chat, index) in voidChats" class="last-chats-chat" @click = "changeChat(chat.id)">
+                                <img class = "circle" :src="'img/' + chat.profileImg" alt="name profile photo">
+                                <div class="chat-info">
+                                    <span>{{chat.name}}</span>
+                                    <small v-if = "chat.chatContent.length">{{ chat.chatContent[last(chat.chatContent)].text }}</small>
+                                </div>
+                                <span v-if = "chat.chatContent.length">{{chat.chatContent[last(chat.chatContent)].time}}</span>
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </div>
@@ -121,6 +128,7 @@
         </div>
 
     </div>
+    <script src="https://unpkg.com/dayjs@1.8.21/dayjs.min.js"></script>
     <script src="script/script.js"></script>
 </body>
 </html>

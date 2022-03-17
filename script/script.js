@@ -173,7 +173,9 @@ const app = new Vue({
             const chatta = document.querySelector('.active-chat-body');
             setTimeout(() => {
                 chatta.scrollTop = chatta.scrollHeight * 2;
-            }, 0)
+            }, 0);
+            this.startNewChatPop = false;
+            this.showChatOptions = false;
         },
         last(array){
             return array.length - 1;
