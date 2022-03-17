@@ -1,28 +1,37 @@
 const app = new Vue({
     el: '#vue-app',
     data:{
-        typing: false,
+        key: '',
         activeChatInfo: `Ultimo accesso oggi alle ${new Date().getHours()}.${new Date().getMinutes()}`,
+        user:{
+            name: 'Sofia',
+            status: 'Online',
+            typing: false,
+        },
         chatArchive: [
             {
                 lastSeen: `Ultimo accesso oggi alle ${randomTime(new Date(2012, 0, 1), new Date())}`,
                 name: "Michele",
                 profileImg: 'avatar_1.jpg',
+                id: 0,
                 chatContent:[
                     {
-                        mine: true,
+                        showMenu: false,
+                        owner: 'Sofia',
                         text: 'ciao',
                         date: randomDate(new Date(2012, 0, 1), new Date()),
                         time: randomTime(new Date(2012, 0, 1), new Date()),
                     },
                     {
-                        mine: false,
+                        showMenu: false,
+                        owner: 'someone',
                         text: 'bella bro',
                         date: randomDate(new Date(2012, 0, 1), new Date()),
                         time: randomTime(new Date(2012, 0, 1), new Date()),
                     },
                     {
-                        mine: false,
+                        showMenu: false,
+                        owner: 'someone',
                         text: 'asjcbsjdbs ouuasdjcsidu vudabviVIbv sdaidv sdvjsbd vdiuuPNPD VSDBVISDUipbv IDVBHIPDV apdvSJDVBHsiv APDVBSDJVBSDHI Vudv aduv duavbuid VUdv usdv duvh dsviu ds',
                         date: randomDate(new Date(2012, 0, 1), new Date()),
                         time: randomTime(new Date(2012, 0, 1), new Date()),
@@ -33,9 +42,11 @@ const app = new Vue({
                 lastSeen: `Ultimo accesso oggi alle ${randomTime(new Date(2012, 0, 1), new Date())}`,
                 name: "Fabio",
                 profileImg: 'avatar_2.jpg',
+                id: 1,
                 chatContent:[
                     {
-                        mine: false,
+                        showMenu: false,
+                        owner: 'someone',
                         text: 'ciao',
                         date: randomDate(new Date(2012, 0, 1), new Date()),
                         time: randomTime(new Date(2012, 0, 1), new Date()),
@@ -46,9 +57,11 @@ const app = new Vue({
                 lastSeen: `Ultimo accesso oggi alle ${randomTime(new Date(2012, 0, 1), new Date())}`,
                 name: "Samuele",
                 profileImg: 'avatar_3.jpg',
+                id: 2,
                 chatContent:[
                     {
-                        mine: false,
+                        showMenu: false,
+                        owner: 'someone',
                         text: 'ciao',
                         time: randomTime(new Date(2012, 0, 1), new Date()),
                         date: randomDate(new Date(2012, 0, 1), new Date()),
@@ -59,9 +72,11 @@ const app = new Vue({
                 lastSeen: `Ultimo accesso oggi alle ${randomTime(new Date(2012, 0, 1), new Date())}`,
                 name: "Alessandro B.",
                 profileImg: 'avatar_4.jpg',
+                id: 3,
                 chatContent:[
                     {
-                        mine: false,
+                        showMenu: false,
+                        owner: 'someone',
                         text: 'ciao',
                         time: randomTime(new Date(2012, 0, 1), new Date()),
                         date: randomDate(new Date(2012, 0, 1), new Date()),
@@ -72,9 +87,11 @@ const app = new Vue({
                 lastSeen: `Ultimo accesso oggi alle ${randomTime(new Date(2012, 0, 1), new Date())}`,
                 name: "Alessandro L.",
                 profileImg: 'avatar_5.jpg',
+                id: 4,
                 chatContent:[
                     {
-                        mine: false,
+                        showMenu: false,
+                        owner: 'someone',
                         text: 'ciao',
                         time: randomTime(new Date(2012, 0, 1), new Date()),
                         date: randomDate(new Date(2012, 0, 1), new Date()),
@@ -85,9 +102,11 @@ const app = new Vue({
                 lastSeen: `Ultimo accesso oggi alle ${randomTime(new Date(2012, 0, 1), new Date())}`,
                 name: "Claudia",
                 profileImg: 'avatar_6.jpg',
+                id: 5,
                 chatContent:[
                     {
-                        mine: false,
+                        showMenu: false,
+                        owner: 'someone',
                         text: 'ciao',
                         time: randomTime(new Date(2012, 0, 1), new Date()),
                         date: randomDate(new Date(2012, 0, 1), new Date()),
@@ -98,9 +117,11 @@ const app = new Vue({
                 lastSeen: `Ultimo accesso oggi alle ${randomTime(new Date(2012, 0, 1), new Date())}`,
                 name: "Federico",
                 profileImg: 'avatar_7.jpg',
+                id: 6,
                 chatContent:[
                     {
-                        mine: false,
+                        showMenu: false,
+                        owner: 'someone',
                         text: 'ciao',
                         time: randomTime(new Date(2012, 0, 1), new Date()),
                         date: randomDate(new Date(2012, 0, 1), new Date()),
@@ -111,9 +132,11 @@ const app = new Vue({
                 lastSeen: `Ultimo accesso oggi alle ${randomTime(new Date(2012, 0, 1), new Date())}`,
                 name: "Davide",
                 profileImg: 'avatar_8.jpg',
+                id: 7,
                 chatContent:[
                     {
-                        mine: false,
+                        showMenu: false,
+                        owner: 'someone',
                         text: 'ciao',
                         time: randomTime(new Date(2012, 0, 1), new Date()),
                         date: randomDate(new Date(2012, 0, 1), new Date()),
@@ -127,7 +150,12 @@ const app = new Vue({
             text: '',
             time: 0.0,
         },
-    },  
+    },
+    computed:{
+        filteredChat() {
+            return this.chatArchive.filter(element => element.name.toLowerCase().includes(this.key.toLowerCase()))
+        }
+    },
     methods:{
         changeChat(index){
             this.activeChatIndex = index;
@@ -141,14 +169,15 @@ const app = new Vue({
         },
         sendMessage(){
             this.newMessage.time = `${new Date().getMinutes() / 100 + new Date().getHours()}`;
+            this.newMessage.showMenu = false;
             this.chatArchive[this.activeChatIndex].chatContent.push({...this.newMessage});
             this.newMessage.text = '';
             this.typing = false;
 
             const chatta = document.querySelector('.active-chat-body');
-            console.log(chatta.scrollTop, chatta.scrollHeight);
            
-            this.chatArchive[this.activeChatIndex].lastSeen = 'Sta scrivendo...'
+            this.chatArchive[this.activeChatIndex].lastSeen = 'Sta scrivendo...';
+
             setTimeout(() => {
                 chatta.scrollTop = chatta.scrollHeight * 2;
                 this.yourTurn = setTimeout(this.otherMessage, 1000);
@@ -159,12 +188,13 @@ const app = new Vue({
                 time: `${new Date().getMinutes() / 100 + new Date().getHours()}`,
                 mine: false,
                 text: 'ok',
+                showMenu: false,
 
             }
             this.chatArchive[this.activeChatIndex].chatContent.push({...response});
 
             const chatta = document.querySelector('.active-chat-body');
-            console.log(chatta.scrollTop, chatta.scrollHeight)
+            
             this.chatArchive[this.activeChatIndex].lastSeen = `Ultimo accesso oggi alle ${new Date().getHours()}.${new Date().getMinutes()}`;
             setTimeout(() => {
                 chatta.scrollTop = chatta.scrollHeight * 2;
@@ -172,25 +202,16 @@ const app = new Vue({
         },
         sendBtn(){
             if (this.newMessage.text){
-                this.typing = true;
+                this.user.typing = true;
             }
             else {
-                this.typing = false;
+                this.user.typing = false;
             }
+        },
+        showMenu(msg){
+            msg.showMenu = !msg.showMenu;
         }
     },
-    mounted(){
-        // console.log(this.chatArchive[1].chatContent[0].date);
-        this.activeChatIndex = 0;
-        // this.chatArchive.sort((a,b) => {
-        //     return a.chatContent[this.last(a.chatContent)].date[2] - b.chatContent[this.last(b.chatContent)].date[2];
-        //  })
-
-        // this.chatArchive.forEach(element => {
-        //     console.log(element.chatContent[this.last(element.chatContent)].date)
-        // });
-    
-    }
 })
 
 
@@ -210,7 +231,7 @@ const app = new Vue({
         return `${time.getUTCHours()}.${time.getUTCMinutes()}`;
       }
     
-      function randomDate(start, end) {
-        const time = new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime()));
-        return [time.getUTCMonth(),time.getUTCDay(),time.getUTCFullYear()];
-      }
+    function randomDate(start, end) {
+    const time = new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime()));
+    return [time.getUTCMonth(),time.getUTCDay(),time.getUTCFullYear()];
+    }
