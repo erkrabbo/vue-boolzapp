@@ -153,8 +153,10 @@ const app = new Vue({
     },
     computed:{
         filteredChat() {
-            return this.chatArchive.filter(element => element.name.toLowerCase().includes(this.searchKey.toLowerCase()))
-        }
+            return this.chatArchive.filter(element => {
+                return element.name.toLowerCase().includes(this.searchKey.toLowerCase()) && element.chatContent.length > 0;
+                })
+            },
     },
     methods:{
         changeChat(index){
@@ -221,6 +223,9 @@ const app = new Vue({
         },
         msgInfo(msg){
             console.log(msg)
+        },
+        delChat(){
+            this.chatArchive[this.activeChatIndex].chatContent = [];
         }
     },
 })
