@@ -34,10 +34,8 @@
 
                 <div class="chat-history-block">
                     <!-- <i class="fa-solid fa-circle-notch menu-icon"></i> -->
-                    <button @click="toggleTheme" aria-label="Toggle themes">
-                        <span v-if="this.theme == 'darkMode'"> Light</span>
-                        <span v-else> Dark</span>  
-                    </button>
+                    <i class="fa-regular fa-sun menu-icon" v-if="this.theme == 'darkMode'" @click="toggleTheme" aria-label="Toggle themes"></i>
+                    <i class="fa-solid fa-moon menu-icon" v-else @click="toggleTheme" aria-label="Toggle themes"></i>
                     
                     <i class="fa-solid fa-message menu-icon" @click = "startNewChatPop = !startNewChatPop"></i>
                     <i class="fa-solid fa-ellipsis-vertical menu-icon"></i>
