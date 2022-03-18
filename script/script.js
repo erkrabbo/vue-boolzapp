@@ -315,13 +315,11 @@ const app = new Vue({
 
     function randomTime() {
         const time = dayjs().hour(Math.random() * 23).minute(Math.random() * 59).format('HH:mm');
-        console.log(time);
         return time;
       }
     
     function randomDate(start, end) {
         const date = dayjs().month(Math.random() * 12).date(Math.random() * 31).format('DD/MM');
-        console.log(date)
         return date;
     }
 

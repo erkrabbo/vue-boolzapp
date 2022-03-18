@@ -159,7 +159,6 @@ body{
 .last-chats{
     display: flex;
     flex-direction: column;
-    /* gap: .5em; */
 
     list-style: none;
 
@@ -249,7 +248,10 @@ body{
 }
 
 .active-chat-footer{
-    position: relative;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
     padding: 1em 0;
     height: var(--CHAT_HISTORY_BLOCK_HEIGHT);
     background-color: var(--APP_BACKGROUND);
@@ -426,7 +428,7 @@ body{
     margin-right: -.2em;
     margin-top: 4.5rem;
     min-height: 0;
-    /* height: 300px; */
+    
     max-height: 100%;
     overflow-y: auto;
 }
@@ -442,7 +444,7 @@ body{
     }
 
     .active-chat{
-        position: static;
+        position: relative;
     }
 
     .chat-history{
