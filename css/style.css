@@ -509,9 +509,23 @@ emoji-picker{
     width: 100%;
     background-color: green;
     color: white;
-    /* font-size: 5rem; */
 }
 .splash h2 {
     margin: auto;
     max-width: 100%;
+}
+
+.zero{
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+    background: var(--APP_BACKGROUND);
+    background: var(--dark-bg-filter);
+    color: var(--text-color);
+}
+.zero img{
+    margin: auto;
+    max-width: 200px;;
+    max-height: 200px;
+
 }

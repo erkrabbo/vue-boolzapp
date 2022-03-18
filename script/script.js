@@ -205,10 +205,7 @@ const app = new Vue({
     methods:{
         changeChat(index){
             this.activeChatIndex = index;
-            // const chatta = document.querySelector('.active-chat-body');
-            // setTimeout(() => {
-            //     chatta.scrollTop = chatta.scrollHeight * 2;
-            // }, 0);
+            
             this.startNewChatPop = false;
             this.showChatOptions = false;
 
@@ -320,18 +317,6 @@ const app = new Vue({
         
     }
 })
-
-
-
-    
-    // this.chatArchive.sort((a,b) => {
-    //     this.activeChatIndex = 0;
-    // return a.chatContent[this.last(a.chatContent)].time - b.chatContent[this.last(b.chatContent)].time;
-    // })
-    // this.chatArchive.sort((a,b) => {
-    // this.activeChatIndex = 0;
-    // return a.chatContent[this.last(a.chatContent)].time - b.chatContent[this.last(b.chatContent)].time;
-    // })
 
     function randomTime() {
         const time = dayjs().hour(Math.random() * 23).minute(Math.random() * 59).format('H:mm');
