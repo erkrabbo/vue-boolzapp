@@ -211,7 +211,7 @@ const app = new Vue({
             this.startNewChatPop = false;
             this.showChatOptions = false;
 
-            this.chatZIndex = 90;
+            this.chatZIndex = 1;
         },
         last(array){
             return array.length - 1;
@@ -316,8 +316,8 @@ const app = new Vue({
     function randomTime() {
         const time = dayjs().hour(Math.random() * 23).minute(Math.random() * 59);
         console.log(time.hour(), time.minute());
-        const minuteToReturn = time.hour() + (time.minute() / 100) % time.minute();
-        return `${minuteToReturn}`;
+        const timeToReturn = time.hour() + (time.minute() / 100) % time.minute();
+        return `${timeToReturn}`;
       }
     
     function randomDate(start, end) {

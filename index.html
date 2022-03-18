@@ -36,7 +36,7 @@
                     <i class="fa-solid fa-circle-notch menu-icon"></i>
                     <i class="fa-solid fa-message menu-icon" @click = "startNewChatPop = !startNewChatPop"></i>
                     <i class="fa-solid fa-ellipsis-vertical menu-icon"></i>
-                    <div class="pop-up-new-chat" v-show = "startNewChatPop">
+                    <div class="pop-up-new-chat" v-show = "startNewChatPop" style="z-index: 91;">
                         <div class="header">
                             <div @click = "startNewChatPop = !startNewChatPop">ANNULLA</div>
                             <input type="text" v-model = "searchContact" placeholder="Digita il nome di un contatto">
