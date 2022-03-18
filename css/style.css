@@ -247,6 +247,7 @@ body{
 }
 
 .active-chat-footer{
+    position: relative;
     padding: 1em 0;
     height: var(--CHAT_HISTORY_BLOCK_HEIGHT);
     background-color: var(--APP_BACKGROUND);
@@ -446,4 +447,13 @@ body{
     .chat-history{
         flex-basis: 500px;
     }
+}
+
+emoji-picker{
+    position:absolute;
+    width: 100%;
+    max-height: 250px;
+    bottom: 100%;
+    left: 0;
+    right: 0;
 }

@@ -119,9 +119,10 @@
                     </div>
                 </li>
             </ul>
-
+            
             <div class="active-chat-footer">
-                <i class="fa-regular fa-face-smile"></i>
+                <emoji-picker v-show = "emojiShow" @emoji-click = "addEmoji"></emoji-picker>
+                <i class="fa-regular fa-face-smile" @click="emojiShow = !emojiShow"></i>
                 <input type="text" size = "1" placeholder="Scrivi un messaggio" @input = "sendBtn" @keypress.enter = "sendMessage" v-model="newMessage.text">
                 <i v-if = "user.typing == false" class="fa-solid fa-microphone"></i>
                 <i v-else class="fa-solid fa-paper-plane" @click = "sendMessage"></i>
@@ -133,6 +134,7 @@
         </div> -->
     </div>
     <script src="https://unpkg.com/dayjs@1.8.21/dayjs.min.js"></script>
+    <script type="module" src="https://cdn.jsdelivr.net/npm/emoji-picker-element@^1/index.js"></script>
     <script src="script/script.js"></script>
 </body>
 </html>

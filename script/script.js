@@ -1,6 +1,7 @@
 const app = new Vue({
     el: '#vue-app',
     data:{
+        emojiShow: false,
         startNewChatPop: false,
         searchKey: '',
         searchContact: '',
@@ -284,6 +285,9 @@ const app = new Vue({
             this.chatArchive[this.activeChatIndex].chatContent = [];
             this.showChatOptions = !this.showChatOptions;
         },
+        addEmoji(e){
+            this.newMessage.text += e.detail.emoji.unicode;
+        }
     },
 })
 
@@ -301,8 +305,8 @@ const app = new Vue({
 
     function randomTime() {
         const time = dayjs().hour(Math.random() * 23).minute(Math.random() * 59);
-        // console.log(time);
-        const minuteToReturn = time.hour() + (time.minute() / 100).toFixed(2) % time.minute();
+        console.log(time.hour(), time.minute());
+        const minuteToReturn = time.hour() + (time.minute() / 100) % time.minute();
         return `${minuteToReturn}`;
       }
     
