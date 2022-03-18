@@ -229,6 +229,7 @@ const app = new Vue({
             
                 this.chatArchive[this.activeChatIndex].lastSeen = 'Online';
 
+                
                 setTimeout(() => {
                     chatta.scrollTop = chatta.scrollHeight * 2;
                     this.yourTurn = setTimeout(this.otherMessage, 1000);
@@ -288,16 +289,23 @@ const app = new Vue({
         },
         addEmoji(e){
             this.newMessage.text += e.detail.emoji.unicode;
+            this.emojiShow = false;
         },
         chatZIndexChange(){
             this.chatZIndex = -1;
             this.activeChatIndex = -1;
+        },
+        closeAllPopUps(){
+            this.emojiShow = false;
+            this.startNewChatPop = false;
+            this.showChatOptions = false;
         }
     },
     mounted(){
         setTimeout(() => {
             this.splash = false;
-        },1000)
+        },1000);
+        
     }
 })
 
@@ -322,5 +330,3 @@ const app = new Vue({
         const date = dayjs().month(Math.random() * 12).date(Math.random() * 31).format('DD/MM');
         return date;
     }
-
-    

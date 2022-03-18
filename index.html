@@ -105,8 +105,8 @@
                 </div>
             </div>
 
-            <ul class="active-chat-body">
-                <li v-for = "msg in chatArchive[activeChatIndex].chatContent" class = "content">
+            <ul class="active-chat-body" @click.self = "closeAllPopUps">
+                <li v-for = "msg in chatArchive[activeChatIndex].chatContent" class = "content" @click = "closeAllPopUps">
                     <div class="message" :class = "msg.owner == user.name ? 'user' : 'other'">
                         <i class="fa-solid fa-ellipsis-vertical menu-icon" @click = "showMenu(msg)"></i>
                         <span>{{msg.text}}</span>
@@ -120,7 +120,7 @@
                 </li>
             </ul>
             
-            <div class="active-chat-footer">
+            <div class="active-chat-footer" @click.self = "closeAllPopUps">
                 <emoji-picker v-show = "emojiShow" @emoji-click = "addEmoji"></emoji-picker>
                 <i class="fa-regular fa-face-smile" @click="emojiShow = !emojiShow"></i>
                 <input type="text" size = "1" placeholder="Scrivi un messaggio" @input = "sendBtn" @keypress.enter = "sendMessage" v-model="newMessage.text">
