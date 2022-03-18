@@ -1,6 +1,7 @@
 const app = new Vue({
     el: '#vue-app',
     data:{
+        splash: true,
         emojiShow: false,
         startNewChatPop: false,
         searchKey: '',
@@ -293,6 +294,11 @@ const app = new Vue({
             this.activeChatIndex = -1;
         }
     },
+    mounted(){
+        setTimeout(() => {
+            this.splash = false;
+        },1000)
+    }
 })
 
 
