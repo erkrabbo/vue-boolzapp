@@ -390,6 +390,8 @@ body{
     border: 1px solid grey;
     border-radius: .2em;
     box-shadow: 0px 0px 10px -1px #000000;
+    background-color: var(--APP_BACKGROUND);
+    color: var(--text-color);
 
 }
 .message.other .pop-up-menu{
@@ -433,7 +435,8 @@ body{
     list-style: none;
     /* text-align: center; */
 
-    background-color: white;
+    background-color: var(--APP_BACKGROUND);
+    color: var(--text-color);
 
     
     border: 1px solid grey;
