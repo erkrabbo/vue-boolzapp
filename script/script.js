@@ -314,7 +314,7 @@ const app = new Vue({
     // })
 
     function randomTime() {
-        const time = dayjs().hour(Math.random() * 23).minute(Math.random() * 59).format('HH:mm');
+        const time = dayjs().hour(Math.random() * 23).minute(Math.random() * 59).format('H:mm');
         return time;
       }
     
