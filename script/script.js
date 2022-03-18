@@ -287,6 +287,10 @@ const app = new Vue({
         },
         addEmoji(e){
             this.newMessage.text += e.detail.emoji.unicode;
+        },
+        chatZIndexChange(){
+            this.chatZIndex = -1;
+            this.activeChatIndex = -1;
         }
     },
 })
