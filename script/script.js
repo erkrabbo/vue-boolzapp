@@ -259,7 +259,7 @@ const app = new Vue({
                             }, 0);
                             
                             setTimeout(() =>{
-                                here.lastSeen = `Ultimo accesso oggi alle ${new Date().getHours()}.${new Date().getMinutes()}`;
+                                here.lastSeen = `Ultimo accesso oggi alle ${dayjs().format('H:mm')}`;
                             }, 2000)
                     },300)
                 }
