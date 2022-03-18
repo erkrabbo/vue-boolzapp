@@ -314,15 +314,15 @@ const app = new Vue({
     // })
 
     function randomTime() {
-        const time = dayjs().hour(Math.random() * 23).minute(Math.random() * 59);
-        console.log(time.hour(), time.minute());
-        const timeToReturn = time.hour() + (time.minute() / 100) % time.minute();
-        return `${timeToReturn}`;
+        const time = dayjs().hour(Math.random() * 23).minute(Math.random() * 59).format('HH:mm');
+        console.log(time);
+        return time;
       }
     
     function randomDate(start, end) {
-    const time = new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime()));
-    return [time.getUTCMonth(),time.getUTCDay(),time.getUTCFullYear()];
+        const date = dayjs().month(Math.random() * 12).date(Math.random() * 31).format('DD/MM');
+        console.log(date)
+        return date;
     }
 
     
