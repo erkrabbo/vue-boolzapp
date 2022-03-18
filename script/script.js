@@ -10,6 +10,7 @@ const app = new Vue({
         newChatId: 0,
         chatZIndex: 0,
         showChatOptions: false,
+        theme: '',
         user:{
             name: 'Sofia',
             status: 'Online',
@@ -299,12 +300,21 @@ const app = new Vue({
             this.emojiShow = false;
             this.startNewChatPop = false;
             this.showChatOptions = false;
-        }
+        },
+
+        toggleTheme() {
+            this.theme = this.theme == 'darkMode' ? '' : 'darkMode'; //toggles theme value
+            document.documentElement.setAttribute('data-theme', this.theme); // sets the data-theme attribute
+            localStorage.setItem('theme', this.theme); // stores theme value on local storage
+}
     },
     mounted(){
         setTimeout(() => {
             this.splash = false;
         },1000);
+
+        let localTheme = localStorage.getItem('theme'); //gets stored theme value if any
+        document.documentElement.setAttribute('data-theme', localTheme); // updates the data-theme attribute
         
     }
 })

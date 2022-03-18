@@ -15,6 +15,16 @@
     --BACGROUND_TOP: #009688;
     --BACGROUND_BOTTOM: #dbdbd3;
     --APP_BACKGROUND: #eaeaea;
+
+
+    --background-color: white;
+    --text-color: black;
+}
+
+[data-theme="darkMode"] {
+    /* Variables for dark mode */
+    --background-color: grey;
+    --text-color: white;   
 }
 
 html{
@@ -60,6 +70,8 @@ body{
     flex-direction: column;
 
     gap: .8rem;
+    background-color: var(--background-color);
+    color: var(--text-color);
 }
 
 .chat-history-header,
@@ -70,6 +82,7 @@ body{
     display: flex;
     align-items: center;
     justify-content: space-between;
+    
 }
 .silence-block{
     justify-content: start;
@@ -169,12 +182,15 @@ body{
 
     margin: 0 calc(-1 * var(--CHAT_HISTORY_BLOCK_PADDING));
     margin-bottom: calc(-1 * var(--CHAT_HISTORY_BLOCK_PADDING));
+    background-color: var(--background-color);
+    
 }
 
 .last-chats-chat{
     display: flex;
     padding: .5em;
     cursor: pointer;
+    
 }
 .last-chats-chat + .last-chats-chat{
     border-top: 1px solid lightgrey;
@@ -192,6 +208,7 @@ body{
 
 .chat-info span{
     font-weight: 600;
+    /* color: var(--text-color); */
     
 }
 
@@ -201,6 +218,7 @@ body{
     max-width: 25ch;
     overflow: hidden;
     text-overflow: ellipsis;
+    color: var(--text-color);
 }
 
 .last-chats-chat>span{
@@ -209,7 +227,8 @@ body{
     /* margin-right: .5em; */
 
     font-size: .8em;
-    color: grey;
+    /* color: grey; */
+    color: var(--text-color);
 }
 
 .active-chat{
